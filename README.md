@@ -15,11 +15,11 @@ Every MIT undergraduate degree program, every course on its official degree char
 
 | | Courses |
 |---|---|
-| On OCW | 409 |
-| On OCW under another number | 67 |
-| Not on OCW | 632 (mostly elective options) |
+| On OCW | 408 |
+| On OCW under another number | 80 |
+| Not on OCW | 620 (mostly elective options) |
 
-*As of the last data refresh; see the date on the site.*
+*As of the November 5, 2026 refresh. The live site always shows the latest numbers.*
 
 ## Use the data
 
