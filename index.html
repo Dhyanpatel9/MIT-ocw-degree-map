@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MIT Undergrad Programs: What's on OpenCourseWare</title>
+<meta name="description" content="Every MIT undergraduate degree program, its required courses, and which ones are free on MIT OpenCourseWare.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fafaf8;--card:#fff;--ink:#1c1c1a;--mut:#6b6b66;--line:#e6e4de;--Y:#1f7a4d;--Yb:#e5f3ea;--O:#9a6a00;--Ob:#fbf1d9;--N:#b3261e;--Nb:#fbe5e3;--C:#55657a;--Cb:#e9edf2;--acc:#a31f34}
+@media (prefers-color-scheme:dark){:root{--bg:#161615;--card:#1f1f1d;--ink:#ecebe6;--mut:#a09f98;--line:#33332f;--Yb:#163626;--Ob:#3a2e10;--Nb:#3d1a17;--Cb:#262c34;--Y:#6fd39e;--O:#e7b955;--N:#f08a80;--C:#9fb0c6}}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink);font-size:14px;line-height:1.45}
+.wrap{max-width:1180px;margin:0 auto;padding:28px 20px 60px}
+h1{font-size:26px;margin:0 0 6px;letter-spacing:-.01em}h1 span{color:var(--acc)}
+.sub{color:var(--mut);max-width:780px;margin:0 0 18px}
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:600;white-space:nowrap}
+.Y{background:var(--Yb);color:var(--Y)}.O{background:var(--Ob);color:var(--O)}.N{background:var(--Nb);color:var(--N)}.C{background:var(--Cb);color:var(--C)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:22px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px}.stat b{font-size:24px;display:block}.stat small{color:var(--mut)}
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);margin-bottom:14px}
+.tab{background:none;border:0;padding:9px 14px;font:inherit;font-weight:600;color:var(--mut);cursor:pointer;border-bottom:2px solid transparent}
+.tab.on{color:var(--ink);border-color:var(--acc)}
+.bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;align-items:center}
+input,select,button.b{font:inherit;padding:7px 10px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink)}
+input{min-width:220px;flex:1}button.b{cursor:pointer;font-weight:600}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--mut);background:var(--bg);cursor:pointer;user-select:none;white-space:nowrap}
+tr:last-child td{border-bottom:0}td.num{font-variant-numeric:tabular-nums;font-weight:600;white-space:nowrap}
+.meter{display:flex;height:8px;border-radius:4px;overflow:hidden;min-width:120px;background:var(--line)}
+.meter i{display:block}.mY{background:var(--Y)}.mO{background:var(--O)}.mN{background:var(--N)}.mC{background:var(--C)}
+a{color:var(--acc)}.q{font-size:12px;font-weight:600;white-space:nowrap}.qR{color:var(--acc)}.qA{color:var(--O)}.qE,.qT{color:var(--mut);font-weight:500}.plink{cursor:pointer;color:var(--acc);font-weight:600}.mut{color:var(--mut);font-size:12px}
+.note{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--acc);border-radius:8px;padding:10px 14px;margin:14px 0;color:var(--mut)}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:8px 14px;border-radius:8px;opacity:0;transition:.2s}
+@media(max-width:640px){.hide-s{display:none}}
+</style></head><body><div class="wrap">
+<h1>MIT undergrad programs: <span>what's on OpenCourseWare</span></h1>
+<p class="sub">All 55 MIT undergraduate programs plus the core requirements, with every course listed on each program's official degree chart, checked against MIT OpenCourseWare's full course list. Data pulled directly from catalog.mit.edu and ocw.mit.edu. <b>Last updated: <span id="upd">…</span>.</b> Course lists include elective options, so programs with long elective lists show many "not on OCW" courses even when the required core is covered.</p>
+<div class="legend"><span class="pill" style="background:var(--card);border:1px solid var(--line)"><b style="color:var(--acc)">Required</b>&nbsp;= must take · <b style="color:var(--O)">Required – choose one</b>&nbsp;= pick one from its group · Elective option = one of many choices</span>
+<span class="pill Y">✓ On OCW</span><span class="pill O">◐ On OCW under an older or different number</span><span class="pill N">✕ Not on OCW</span></div>
+<div class="stats" id="stats"></div>
+<div class="tabs"><button class="tab on" data-v="progs">By program</button><button class="tab" data-v="courses">All courses</button></div>
+<div id="vprogs">
+<div class="bar"><select id="school"></select></div>
+<table><thead><tr><th data-k="code">Program</th><th data-k="school" class="hide-s">School</th><th data-k="tot">Courses</th><th data-k="Y">On OCW</th><th data-k="O" class="hide-s">Other number</th><th data-k="N">Not on OCW</th><th data-k="rqp">Must-take courses on OCW</th><th data-k="pct" class="hide-s">All listed courses</th></tr></thead><tbody id="pbody"></tbody></table>
+</div>
+<div id="vcourses" hidden>
+<div class="bar"><input id="q" placeholder="Search course number or title…"><select id="prog"></select><select id="st"><option value="">All statuses</option><option value="Y">On OCW</option><option value="O">Other number</option><option value="N">Not on OCW</option></select><select id="rq"><option value="">Required + electives</option><option value="R">Required only</option><option value="A">Required – choose one</option><option value="E">Elective options</option></select><button class="b" id="copy">Copy as CSV</button></div>
+<div id="pnote"></div>
+<table><thead><tr><th>Program</th><th>Required?</th><th class="hide-s">Catalog section</th><th>Course</th><th>Title</th><th>Status</th><th>Course materials</th><th>More free materials</th></tr></thead><tbody id="cbody"></tbody></table>
+</div>
+<div class="note">"Other number" means OCW has the class under its number before MIT's 2022 renumbering (e.g. 6.006 for 6.1210), or a class with the same title under a different number. "Not on OCW" means no matching course exists in OCW's full course list. "More free materials" lists other free sources we verified (MIT course websites, MITx courses on edX that are free to audit), plus quick searches of MIT Learn (which covers OCW, MITx and MIT Open Learning Library) and YouTube. OCW materials are free under Creative Commons BY-NC-SA. Full requirements: <a href="https://catalog.mit.edu/degree-charts/">catalog.mit.edu/degree-charts</a>.</div>
+<p class="mut" style="margin-top:18px">Independent project, not affiliated with or endorsed by MIT. Course data from <a href="https://catalog.mit.edu/degree-charts/">catalog.mit.edu</a> and <a href="https://ocw.mit.edu">ocw.mit.edu</a>. Found a mistake? <a href="https://github.com/Dhyanpatel9/mit-ocw-degree-map/issues">Open an issue on GitHub</a>.</p>
+</div><div class="toast" id="toast"></div>
+<script>
+(async()=>{let D;try{D=await fetch('data/courses.json',{cache:'no-cache'}).then(r=>r.json())}catch(e){document.querySelector('.sub').insertAdjacentHTML('afterend','<div class="note">Could not load data/courses.json. If you opened this file directly, run a local server instead: <code>python3 -m http.server</code></div>');return}
+document.getElementById('upd').textContent=new Date(D.meta.updated+'T12:00:00').toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});const Q={R:'Required',A:'Required – choose one',E:'Elective option','-':'Thesis / research'};const L={Y:'✓ On OCW',O:'◐ Other number',N:'✕ Not on OCW','-':'Thesis / research'};
+D.progs.forEach(p=>{p.rqp=p.rq?p.rqo/p.rq:-1;p.tot=p.Y+p.O+p.N;p.pct=p.tot?(p.Y+p.O)/p.tot:0});
+const $=s=>document.querySelector(s);const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const uniq=[...new Map(D.rows.filter(r=>r.s!=='-').map(r=>[r.num,r])).values()];
+const cnt=s=>uniq.filter(r=>r.s===s).length;
+$('#stats').innerHTML=[[D.progs.length-1,'programs (+ core)'],[uniq.length,'distinct courses listed'],[cnt('Y'),'on OCW'],[cnt('O'),'on OCW, other number'],[cnt('N'),'not on OCW']].map(([n,l])=>`<div class="stat"><b>${n}</b><small>${l}</small></div>`).join('');
+const schools=[...new Set(D.progs.map(p=>p.school))];
+$('#school').innerHTML='<option value="">All schools</option>'+schools.map(s=>`<option>${esc(s)}</option>`).join('');
+$('#prog').innerHTML='<option value="">All programs</option>'+D.progs.map(p=>`<option value="${esc(p.code)}">${esc(p.code)} – ${esc(p.name)}</option>`).join('');
+let sk='',sd=1;
+function drawP(){let ps=D.progs.filter(p=>!$('#school').value||p.school===$('#school').value);
+if(sk)ps=[...ps].sort((a,b)=>(a[sk]>b[sk]?1:a[sk]<b[sk]?-1:0)*sd);
+$('#pbody').innerHTML=ps.map(p=>`<tr><td><span class="plink" data-p="${esc(p.code)}">${esc(p.code)}</span> ${esc(p.name)} <a class="mut" href="${esc(p.url)}">catalog ↗</a></td><td class="hide-s mut">${esc(p.school)}</td><td class="num">${p.tot}</td><td class="num" style="color:var(--Y)">${p.Y}</td><td class="num hide-s" style="color:var(--O)">${p.O}</td><td class="num" style="color:var(--N)">${p.N}</td><td class="num">${p.rq?`${p.rqo} of ${p.rq} <span class="mut">(${Math.round(p.rqo/p.rq*100)}%)</span>`:'<span class="mut">no fixed required courses</span>'}</td><td class="hide-s"><div class="meter">${['Y','O','N'].map(k=>`<i class="m${k}" style="width:${p.tot?p[k]/p.tot*100:0}%"></i>`).join('')}</div></td></tr>`).join('')}
+document.querySelectorAll('#vprogs th').forEach(th=>th.onclick=()=>{const k=th.dataset.k;sd=sk===k?-sd:(k==='code'||k==='school'?1:-1);sk=k;drawP()});
+function sl(r){if(r.s==='-')return '';if(r.slug)return `<a href="https://ocw.mit.edu/courses/${encodeURIComponent(r.slug)}/">Open course materials ↗</a><div class="mut" style="word-break:break-all">ocw.mit.edu/courses/${esc(r.slug)}</div>`+(r.via?`<div class="mut">${esc(r.via==='same title'?'same title, other number':(/^(same|7\.06x|listed)/.test(r.via)?r.via:'as '+r.via))}</div>`:'');return `<a class="mut" href="https://ocw.mit.edu/search/?q=${encodeURIComponent(r.num)}">search</a>`}
+function more(r){if(r.s==='-')return '';const q=encodeURIComponent(r.num.replace(/J$/,''));return (r.more||[]).map(([l,u])=>`<a href="${esc(u)}">${esc(l)} ↗</a>`).join('<br>')+((r.more||[]).length?'<br>':'')+`<a class="mut" href="https://learn.mit.edu/search?q=${q}">MIT Learn</a> · <a class="mut" href="https://www.youtube.com/results?search_query=MIT+${q}">YouTube</a>`}
+function cur(){const q=$('#q').value.toLowerCase(),p=$('#prog').value,s=$('#st').value;return D.rows.filter(r=>(!p||r.p===p)&&(!s||r.s===s)&&(!$('#rq').value||r.q===$('#rq').value)&&(!q||(r.num+' '+r.t+' '+r.sec).toLowerCase().includes(q)))}
+function drawC(){const p=D.progs.find(x=>x.code===$('#prog').value);$('#pnote').innerHTML=p&&p.note?`<div class="note">${esc(p.code)} ${esc(p.name)}: ${esc(p.note)}</div>`:'';
+$('#cbody').innerHTML=cur().map(r=>`<tr><td class="num">${esc(r.p)}</td><td><span class="q q${r.q==='-'?'T':r.q}">${Q[r.q]}</span></td><td class="hide-s mut">${esc(r.q==='R'&&/^(Select|Choose)/i.test(r.sec)?'':r.sec)}</td><td class="num">${r.alt?'<span class="mut">or </span>':''}${esc(r.num)}</td><td>${esc(r.t)}</td><td>${r.s==='-'?'<span class="mut">Thesis / research</span>':`<span class="pill ${r.s}">${L[r.s]}</span>`}</td><td>${sl(r)}</td><td>${more(r)}</td></tr>`).join('')||'<tr><td colspan="8" class="mut">No matches.</td></tr>'}
+function view(v){document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('on',t.dataset.v===v));$('#vprogs').hidden=v!=='progs';$('#vcourses').hidden=v!=='courses'}
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>view(t.dataset.v));
+document.addEventListener('click',e=>{const p=e.target.dataset&&e.target.dataset.p;if(p){$('#prog').value=p;$('#st').value='';$('#q').value='';drawC();view('courses');window.scrollTo(0,0)}});
+['#q','#prog','#st','#rq'].forEach(s=>$(s).addEventListener('input',drawC));$('#school').onchange=drawP;
+$('#copy').onclick=async()=>{const csv='Program,Required?,Catalog section,Course,Title,Status,Course materials link,More free materials\n'+cur().map(r=>[r.p,Q[r.q],r.sec,r.num,r.t,L[r.s],r.slug?'https://ocw.mit.edu/courses/'+r.slug+'/':'',(r.more||[]).map(x=>x[1]).join(' ')].map(x=>'"'+String(x).replace(/"/g,'""')+'"').join(',')).join('\n');
+try{await navigator.clipboard.writeText(csv);toast('Copied – paste into Excel or Google Sheets')}catch(e){toast('Copy was blocked by the browser')}};
+function toast(m){const t=$('#toast');t.textContent=m;t.style.opacity=1;setTimeout(()=>t.style.opacity=0,2200)}
+drawP();drawC();
+})();
+</script></body></html>

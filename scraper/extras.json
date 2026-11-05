@@ -1,0 +1,99 @@
+{
+ "joint": {
+  "18.062J": "6.1200J",
+  "18.400J": "6.1400J",
+  "18.410J": "6.1220J",
+  "7.08J": "5.08J",
+  "17.30J": "11.002J",
+  "24.905J": "9.59J"
+ },
+ "override": {
+  "7.06": [
+   "O",
+   "res-7-007-7-06x-cell-biology",
+   "7.06x online version"
+  ]
+ },
+ "links": {
+  "6.1010": [
+   [
+    "Course website",
+    "https://py.mit.edu/"
+   ]
+  ],
+  "6.1020": [
+   [
+    "Course website",
+    "https://mit.edu/6.102"
+   ]
+  ],
+  "7.06": [
+   [
+    "MITx Biology courses (free to audit)",
+    "https://web.mit.edu/mitxbio/courses.html"
+   ]
+  ],
+  "7.03": [
+   [
+    "7.03x Genetics (free)",
+    "https://ocw.mit.edu/courses/res-7-006-7-03x-genetics/"
+   ],
+   [
+    "MITx Biology courses",
+    "https://web.mit.edu/mitxbio/courses.html"
+   ]
+  ],
+  "7.05": [
+   [
+    "MITx 7.05x Biochemistry",
+    "https://web.mit.edu/mitxbio/courses.html"
+   ]
+  ],
+  "16.C20J": [
+   [
+    "MITx CSE.002x on edX (free to audit)",
+    "https://www.edx.org/search?q=Introduction%20to%20Computational%20Science%20and%20Engineering"
+   ]
+  ],
+  "CSE.C20J": [
+   [
+    "MITx CSE.002x on edX (free to audit)",
+    "https://www.edx.org/search?q=Introduction%20to%20Computational%20Science%20and%20Engineering"
+   ]
+  ],
+  "18.C06J": [
+   [
+    "Similar: 18.06 Linear Algebra on OCW (~60% overlap)",
+    "https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/"
+   ],
+   [
+    "Current 18.06 notes on GitHub",
+    "https://github.com/mitmath/1806"
+   ]
+  ],
+  "6.C06J": [
+   [
+    "Similar: 18.06 Linear Algebra on OCW (~60% overlap)",
+    "https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/"
+   ]
+  ],
+  "18.06": [
+   [
+    "Current 18.06 notes on GitHub",
+    "https://github.com/mitmath/1806"
+   ]
+  ],
+  "6.100A": [
+   [
+    "MITx 6.00.1x on edX (free to audit)",
+    "https://www.edx.org/search?q=6.00.1x"
+   ]
+  ],
+  "6.100B": [
+   [
+    "MITx 6.00.2x on edX (free to audit)",
+    "https://www.edx.org/search?q=6.00.2x"
+   ]
+  ]
+ }
+}
