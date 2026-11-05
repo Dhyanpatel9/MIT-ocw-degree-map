@@ -2,7 +2,7 @@
 
 Every MIT undergraduate degree program, every course on its official degree chart, and whether you can study that course for free on [MIT OpenCourseWare](https://ocw.mit.edu) (OCW).
 
-**Live site:** https://dhyanpatel9.github.io/mit-ocw-degree-map/
+**Live site:** https://dhyanpatel9.github.io/MIT-ocw-degree-map/
 
 ## What's in it
 
@@ -53,7 +53,7 @@ python3 -m http.server          # then open http://localhost:8000
 - Matches by an older number or by title are automated. Each one shows which OCW course it matched, so you can check it.
 - OCW courses are free to study, but they don't give MIT credit or a degree.
 
-Spotted a mistake? [Open an issue](https://github.com/Dhyanpatel9/mit-ocw-degree-map/issues) or send a pull request (most fixes go in `scraper/extras.json`).
+Spotted a mistake? [Open an issue](https://github.com/Dhyanpatel9/MIT-ocw-degree-map/issues) or send a pull request (most fixes go in `scraper/extras.json`).
 
 ## License and credits
 
